@@ -1,4 +1,7 @@
 #! /bin/bash -fv
+#
+# Create an ssh key for a user with no .ssh file
+#
 cd ~
 mkdir .ssh
 chmod 0700 .ssh
