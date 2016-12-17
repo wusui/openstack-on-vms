@@ -1,4 +1,7 @@
 #! /bin/bash -fv
+#
+# Make sure stack and root can ssh between the undercloud and the physical machine
+#
 HOME=/home/stack
 VMADDR=`arp -an | grep virbr | grep -v incomplete | sed 's/^.*(//' | sed 's/).*//'`
 sudo cat /root/.ssh/id_rsa.pub > /tmp/everybody

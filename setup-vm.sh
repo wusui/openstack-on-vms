@@ -1,4 +1,7 @@
 #! /bin/bash -fv
+#
+# Set up stack home directory environment
+#
 HOME=/home/stack
 mkdir ${HOME}/images
 mkdir ${HOME}/templates

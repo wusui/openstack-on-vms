@@ -1,4 +1,7 @@
 #! /bin/bash
+#
+# Perform ironic operationis after introspecition but prior to deploying the overcloud
+#
 HOME=/home/stack
 function doit {
     OIFS=$IFS

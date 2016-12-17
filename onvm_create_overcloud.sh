@@ -1,4 +1,7 @@
 #! /bin/bash -fv
+#
+# Create the yaml and ssh files needed, and  bring up the overcloud
+#
 HOME=/home/stack
 cd ${HOME}
 source stackrc

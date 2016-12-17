@@ -1,4 +1,8 @@
 #! /bin/bash -fv
+#
+# Save address of undercloud node and get the remote machine and scripts onto
+# the virtual network that is running on the remote host.
+#
 virsh list --all
 VMADDR=`arp -an | grep virbr | grep -v incomplete |  sed 's/^.*(//' | sed 's/).*//'`
 echo "The vm we will be running on is:"

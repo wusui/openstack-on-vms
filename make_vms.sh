@@ -1,4 +1,7 @@
 #! /bin/bash -fv
+#
+# Install ansible. git and genisoimage.  Create files needed to run ansible script
+#
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
 sudo yum install ansible -y
 ansible --version

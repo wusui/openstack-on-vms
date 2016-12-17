@@ -1,4 +1,8 @@
 #! /bin/bash -fv
+#
+# Install the undercloud and make sure the neutron subnets are set up for the
+# overcloud
+#
 HOME=/home/stack
 openstack undercloud install
 source ${HOME}/stackrc

@@ -1,4 +1,7 @@
 #! /bin/bash -fv
+#
+# Update repos so that openstack can be installed.  Install virtual machine packages
+#
 scriptloc='/tmp/vmsetup'
 source ${scriptloc}/secrets
 if [ ${subscrname} ]; then

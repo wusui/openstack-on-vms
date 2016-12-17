@@ -1,4 +1,8 @@
 #! /bin/bash -fv
+#
+# make ssh public keys for both stack and root.  Assumes that there is no
+# .ssh directory to start with
+#
 HOME=/home/stack
 cd /root
 mkdir .ssh

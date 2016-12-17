@@ -1,4 +1,9 @@
 #! /bin/bash -fv
+#
+# Create and run the ansible playbook that createis virtual machines
+# TO DO: Fix this to just do the vm creations an terminate rather than fail
+#        trying to install ospd versions that are not there.
+#
 #cd ~/ansible
 sed ':a;N;$!ba;s/\n/\\n/g' ~/.ssh/id_rsa > /tmp/amiddle
 cat <<EOF > /tmp/astart

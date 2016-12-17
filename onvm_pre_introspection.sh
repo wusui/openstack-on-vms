@@ -1,4 +1,7 @@
 #! /bin/bash -fv
+#
+# Set up the instackenv.json file and do the introspection
+#
 HOME=/home/stack
 cd ${HOME}
 source stackrc

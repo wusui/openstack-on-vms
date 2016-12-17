@@ -1,4 +1,8 @@
 #! /bin/bash -fv
+#
+# generate an iso image for the ansible script.  It is not clear to me if 
+# this is needed because the ansible script does not complete
+#
 HOME=/home/stack
 mkdir /root/cloud-init ; cd /root/cloud-init
 cat << EOF > meta-data
