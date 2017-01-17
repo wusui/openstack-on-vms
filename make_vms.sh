@@ -2,8 +2,12 @@
 #
 # Install ansible. git and genisoimage.  Create files needed to run ansible script
 #
+sudo yum-config-manager --enable epel
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y
-sudo yum install ansible -y
+sudo yum install python-devel -y
+sudo yum install python-pip libffi-devel openssl-devel gcc -y
+sudo pip install --upgrade pip
+sudo pip install ansible
 ansible --version
 mkdir -p /root/ansible/{roles,inventories/virt-env-ospd,playbooks/virt-env-ospd/files/{ospd7,ospd8}} ; cd /root/ansible
 MYMACHINE=`hostname -s`
