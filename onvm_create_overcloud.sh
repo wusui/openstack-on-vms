@@ -57,8 +57,5 @@ openstack overcloud deploy --templates \
   --compute-flavor compute \
   --ceph-storage-flavor ceph-storage \
   --control-flavor control \
-  --neutron-network-type vxlan \
-  --neutron-tunnel-types vxlan \
-  --ntp-server pool.ntp.org \
-  --libvirt-type qemu
-
+  --ntp-server clock.redhat.com \
+  --libvirt-type kvm
