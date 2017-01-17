@@ -16,6 +16,7 @@ cat <<EOF > /tmp/astart
     - virt-env-ospd
 
   vars:
+    virt_env_ospd_rhos_release: false
     # NETWORK #
     virt_env_ospd_bridges:
       - aardvark-pxe
@@ -94,6 +95,7 @@ cat <<EOF > /tmp/astart
     - virt-env-ospd
 
   vars:
+    virt_env_ospd_rhos_release: false
     # UNDERCLOUD NODE #
     virt_env_ospd_undercloud_hostname: ${1}.aardvark.lab
     virt_env_ospd_upload_images: false
