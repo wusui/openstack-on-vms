@@ -60,3 +60,4 @@ openstack overcloud deploy --templates \
   --control-flavor control \
   --ntp-server clock.redhat.com \
   --libvirt-type kvm
+  
