@@ -10,6 +10,6 @@ VM_IP=`cat /tmp/vaddrinfo`
 sudo ssh ${VM_IP} sudo /tmp/vmsetup/onvm_mkkeys_wrap.sh
 sudo /tmp/vmsetup/everybody_talks.sh
 HOST=`hostname -s`
-sudo -t ssh stack@${VM_IP} /tmp/vmsetup/setup-vm.sh $HOST
-sudo -t ssh stack@${VM_IP} /tmp/vmsetup/setup_certifications.sh
-sudo -t ssh stack@${VM_IP} /tmp/vmsetup/get_images_and_nameserver.sh
+sudo ssh -t stack@${VM_IP} /tmp/vmsetup/setup-vm.sh $HOST
+sudo ssh -t stack@${VM_IP} /tmp/vmsetup/setup_certifications.sh
+sudo ssh -t stack@${VM_IP} /tmp/vmsetup/get_images_and_nameserver.sh
