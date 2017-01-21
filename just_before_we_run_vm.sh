@@ -15,4 +15,4 @@ scp /tmp/vmsetup/quick.tar ${VMADDR}:/tmp
 scp /tmp/vmsetup/install_on_vm.sh ${VMADDR}:/tmp
 hostname -i > /tmp/hostnamei
 scp /tmp/hostnamei ${VMADDR}:/tmp/hostnamei
-ssh ${VMADDR} /tmp/install_on_vm.sh
+ssh -t ${VMADDR} /tmp/install_on_vm.sh
