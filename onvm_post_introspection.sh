@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/bash -fv
 #
 # Perform ironic operationis after introspecition but prior to deploying the overcloud
 #
