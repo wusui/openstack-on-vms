@@ -50,6 +50,8 @@ cp /tmp/vmsetup/wipe-disk.sh ${HOME}/templates/firstboot/wipe-disk.sh
 chmod 0775 ${HOME}/templates/firstboot/wipe-disk.sh
 sed -i 's/# CephStorageCount: 0/CephStorageCount: 3/' ${HOME}/templates/storage-environment.yaml
 
+sleep 180
+
 openstack overcloud deploy --templates \
   -e ${HOME}/templates/storage-environment.yaml \
   --control-scale 1 \
