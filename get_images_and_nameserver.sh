@@ -4,6 +4,7 @@
 # overcloud
 #
 HOME=/home/stack
+cd ${HOME}
 openstack undercloud install
 source ${HOME}/stackrc
 sudo yum -y install rhosp-director-images rhosp-director-images-ipa
