@@ -12,4 +12,6 @@ sudo /tmp/vmsetup/everybody_talks.sh
 HOST=`hostname -s`
 sudo ssh -t stack@${VM_IP} /tmp/vmsetup/setup-vm.sh $HOST
 sudo ssh -t stack@${VM_IP} /tmp/vmsetup/setup_certifications.sh
+sudo sed -i -e 's,^SELINUX=.*,SELINUX=permissive' /etc/selinux/config
+sudo ssh -t stack@${VM_IP} sudo sed -i -e 's,^SELINUX=.*,SELINUX=permissive' /etc/selinux/config
 sudo ssh -t stack@${VM_IP} /tmp/vmsetup/get_images_and_nameserver.sh
