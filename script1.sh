@@ -4,6 +4,7 @@
 #
 scriptloc='/tmp/vmsetup'
 source ${scriptloc}/secrets
+#sudo sed -i -e 's,^hostname *=.*,hostname = subscription.rhn.stage.redhat.com,;s,baseurl *=.*,baseurl = http://cdn.stage.redhat.com,' /etc/rhsm/rhsm.conf
 if [ ${subscrname} ]; then
     userclause="--username=${subscrname}"
 fi
