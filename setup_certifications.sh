@@ -3,6 +3,7 @@
 # Create the tls/ssl certificates.  Work around permissions issues.
 #
 HOME=/home/stack
+SECOND_IPADDR=192.0.2.2
 sudo yum install -y python-tripleoclient
 cp /usr/share/instack-undercloud/undercloud.conf.sample ${HOME}/undercloud.conf
 openssl genrsa -out ca.key.pem 4096
@@ -12,7 +13,7 @@ California
 Los Angeles
 Red Hat
 Red Hat
-192.0.2.2
+${SECOND_IPADDR}
 wusui@redhat.com
 EOF
 sudo cp ca.crt.pem /etc/pki/ca-trust/source/anchors/
@@ -40,15 +41,15 @@ s/.*/organizationalUnitName_default = Red Hat/
 .
 /commonName.*Common Name
 a
-commonName_default = 192.0.2.2
+commonName_default = ${SECOND_IPADDR}
 .
 /^keyUsage = 
 a
 subjectAltName = @alt_names
 
 [alt_names]
-IP.1 = 192.0.2.2
-DNS.1 = 192.0.2.2
+IP.1 = ${SECOND_IPADDR}
+DNS.1 = ${SECOND_IPADDR}
 DNS.2 = instack.localdomain
 DNS.3 = vip.localdomain
 .
