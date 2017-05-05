@@ -9,5 +9,5 @@ y=`sudo virsh list --all | awk '{print $2}' | grep aardvark | paste -d -s`
 for x in $y; do
     /tmp/vmsetup/edit_virsh.sh $x
 done
-sleep 180
+sleep 182
 sudo ssh -t stack@${VM_IP} /tmp/vmsetup/onvm_create_overcloud.sh
