@@ -38,7 +38,7 @@ cat <<EOF > /tmp/astart
       name: ceph
       disk_size: 42g
       cpu: 4
-      mem: 4096
+      mem: 8192
       # The last digit is not missing !!
       mac: 52:54:00:aa:e3:8
       vm_count: 3
@@ -124,7 +124,7 @@ cat <<EOF > /tmp/afinish
     virt_env_ospd_flavors:
       - { name: "control", ram: "8192", disk: "20", cpu: "2" }
       - { name: "compute", ram: "8192", disk: "20", cpu: "2" }
-      - { name: "storage", ram: "4096", disk: "20", cpu: "2" }
+      - { name: "storage", ram: "8192", disk: "20", cpu: "2" }
 
 EOF
 head -c -1 -q /tmp/astart /tmp/amiddle /tmp/afinish  > /root/ansible/playbooks/virt-env-ospd/env1.yml

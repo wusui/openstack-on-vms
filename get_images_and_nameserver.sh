@@ -6,6 +6,10 @@
 HOME=/home/stack
 cd ${HOME}
 openstack undercloud install
+if ! [ -e stackrc ]; then
+    sudo cp /root/stackrc stackrc
+    sudo chown stack:stack stackrc
+fi
 source ${HOME}/stackrc
 sudo yum -y install rhosp-director-images rhosp-director-images-ipa
 cd ${HOME}/images
