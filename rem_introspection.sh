@@ -10,4 +10,7 @@ for x in $y; do
     /tmp/vmsetup/edit_virsh.sh $x
 done
 sleep 182
+sudo iptables -F
+sudo systemctl disable firewalld
+sudo systemctl stop firewalld
 sudo ssh -t stack@${VM_IP} /tmp/vmsetup/onvm_create_overcloud.sh

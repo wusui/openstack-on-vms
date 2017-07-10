@@ -50,17 +50,8 @@ cp /tmp/vmsetup/wipe-disk.sh ${HOME}/templates/firstboot/wipe-disk.sh
 chmod 0775 ${HOME}/templates/firstboot/wipe-disk.sh
 sed -i 's/# CephStorageCount: 0/CephStorageCount: 3/' ${HOME}/templates/storage-environment.yaml
 
-sleep 301
-
-export HEAT_INCLUDE_PASSWORD=1
-openstack overcloud deploy --templates \
-  -e ${HOME}/templates/storage-environment.yaml \
-  --control-scale 1 \
-  --ceph-storage-scale 3 \
-  --compute-scale 1 \
-  --compute-flavor compute \
-  --ceph-storage-flavor ceph-storage \
-  --control-flavor control \
-  --ntp-server clock.redhat.com \
-  --libvirt-type kvm
-  
+sudo iptables -F
+/tmp/vmsetup/overcloud_gets_real.sh
+if ! [ -e overcloudrc ]; then
+    /tmp/vmsetup/overcloud_gets_real.sh
+fi
