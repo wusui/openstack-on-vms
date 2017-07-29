@@ -16,7 +16,19 @@ cat <<EOF > /tmp/astart
     - virt-env-ospd
 
   vars:
+    rhn_username: stack
     virt_env_ospd_rhos_release: false
+    virt_env_ospd_director_version: 9-director
+    rhn_repos:
+      - rhel-7-server-rpms
+      - rhel-7-server-extras-rpms
+      - rhel-7-server-rh-common-rpms
+      - rhel-ha-for-rhel-7-server-rpms
+      - rhel-7-server-openstack-9-rpms
+      - rhel-7-server-openstack-9-director-rpms
+      - rhel-7-server-rhceph-1.3-osd-rpms
+      - rhel-7-server-rhceph-1.3-mon-rpms
+      - rhel-7-server-rhceph-1.3-tools-rpms
     # NETWORK #
     virt_env_ospd_bridges:
       - aardvark-pxe

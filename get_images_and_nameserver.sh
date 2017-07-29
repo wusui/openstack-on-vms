@@ -19,5 +19,5 @@ openstack image list
 ls -l /httpboot
 X=`neutron subnet-list | tail -2 | head -1 | sed 's/^| //' | sed 's/ |.*//'`
 neutron subnet-list
-neutron subnet-update $X --dns-nameserver 192.0.2.2
+neutron subnet-update $X --dns-nameserver 8.8.8.8
 neutron subnet-show $X

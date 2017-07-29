@@ -20,5 +20,5 @@ sleep 300
 sleep 180
 source ./secrets
 ssh -t ${octoname}@$1 sudo /tmp/vmsetup/install_run_undercloud_cmds.sh $1
-sleep 181
+#sleep 181
 ssh -t ${octoname}@$1 sudo /tmp/vmsetup/rem_introspection.sh

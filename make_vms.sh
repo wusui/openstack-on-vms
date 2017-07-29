@@ -9,7 +9,7 @@ sudo yum install python-pip libffi-devel openssl-devel gcc -y
 sudo pip install --upgrade pip
 sudo pip install ansible
 ansible --version
-mkdir -p /root/ansible/{roles,inventories/virt-env-ospd,playbooks/virt-env-ospd/files/{ospd7,ospd8}} ; cd /root/ansible
+mkdir -p /root/ansible/{roles,inventories/virt-env-ospd,playbooks/virt-env-ospd/files/{ospd7,ospd8,ospd9}} ; cd /root/ansible
 MYMACHINE=`hostname -s`
 MYIP=`hostname -i`
 cat << EOF > inventories/virt-env-ospd/hosts
