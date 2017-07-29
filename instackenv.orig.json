@@ -18,7 +18,7 @@
                 "52:54:00:aa:e3:81"
             ],
             "cpu":"4",
-            "memory":"4096",
+            "memory":"8192",
             "disk":"40",
             "arch":"x86_64",
             "pm_type":"pxe_ssh",
@@ -31,7 +31,7 @@
                 "52:54:00:aa:e3:82"
             ],
             "cpu":"4",
-            "memory":"4096",
+            "memory":"8192",
             "disk":"40",
             "arch":"x86_64",
             "pm_type":"pxe_ssh",
@@ -44,7 +44,7 @@
                 "52:54:00:aa:e3:83"
             ],
             "cpu":"4",
-            "memory":"4096",
+            "memory":"8192",
             "disk":"40",
             "arch":"x86_64",
             "pm_type":"pxe_ssh",

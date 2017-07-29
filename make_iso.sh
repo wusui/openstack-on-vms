@@ -26,21 +26,21 @@ users:
       - ${ROOTID}
 
 write_files:
-  - path: /etc/sysconfig/network-scripts/ifcfg-eth0
+  - path: /etc/sysconfig/network-scripts/ifcfg-eno1
     content: |
-      DEVICE=eth0
+      DEVICE=eno1
       TYPE=Ethernet
       BOOTPROTO=dhcp
       ONBOOT=yes
-  - path: /etc/sysconfig/network-scripts/ifcfg-eth2
+  - path: /etc/sysconfig/network-scripts/ifcfg-eno2
     content: |
-      DEVICE=eth2
+      DEVICE=eno2
       TYPE=Ethernet
       BOOTPROTO=none
       ONBOOT=yes
-  - path: /etc/sysconfig/network-scripts/ifcfg-eth2.10
+  - path: /etc/sysconfig/network-scripts/ifcfg-eno2.10
     content: |
-      DEVICE=eth2.10
+      DEVICE=eno2.10
       TYPE=vlan
       BOOTPROTO=none
       ONBOOT=yes
@@ -52,7 +52,7 @@ write_files:
 
 runcmd:
   - /usr/bin/systemctl restart network
-  - /usr/sbin/iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eth0 -j MASQUERADE
+  - /usr/sbin/iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eno1 -j MASQUERADE
   - /usr/sbin/service iptables save
 EOF
 genisoimage -output /root/ansible/playbooks/virt-env-ospd/files/cloud-init-aardvark.iso -volid cidata -joliet -rock user-data meta-data

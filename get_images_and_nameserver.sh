@@ -6,6 +6,10 @@
 HOME=/home/stack
 cd ${HOME}
 openstack undercloud install
+if ! [ -e stackrc ]; then
+    sudo cp /root/stackrc stackrc
+    sudo chown stack:stack stackrc
+fi
 source ${HOME}/stackrc
 sudo yum -y install rhosp-director-images rhosp-director-images-ipa
 cd ${HOME}/images
@@ -15,5 +19,5 @@ openstack image list
 ls -l /httpboot
 X=`neutron subnet-list | tail -2 | head -1 | sed 's/^| //' | sed 's/ |.*//'`
 neutron subnet-list
-neutron subnet-update $X --dns-nameserver 192.0.2.2
+neutron subnet-update $X --dns-nameserver 8.8.8.8
 neutron subnet-show $X

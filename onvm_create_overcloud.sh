@@ -5,9 +5,20 @@
 HOME=/home/stack
 cd ${HOME}
 source stackrc
-cp /usr/share/openstack-tripleo-heat-templates/environments/storage-environment.yaml ${HOME}/templates/.
-ed ${HOME}/templates/storage-environment.yaml <<EOF
+sudo iptables -F
+#mv ${HOME}/templates ${HOME}/templates.bak
+#cp -vR /usr/share/openstack-tripleo-heat-templates ${HOME}/templates
+mkdir ${HOME}/templates/environments
+cp /usr/share/openstack-tripleo-heat-templates/environments/storage-environment.yaml ${HOME}/templates/environments/.
+ed ${HOME}/templates/environments/storage-environment.yaml <<EOF
 g/# CinderEnableNfsBackend/s//CinderEnableNfsBackend/
+4i
+resource_registry:
+  OS::TripleO::Services::CephMon: /usr/share/openstack-tripleo-heat-templates/puppet/services/ceph-mon.yaml
+  OS::TripleO::Services::CephOSD: /usr/share/openstack-tripleo-heat-templates/puppet/services/ceph-osd.yaml
+  OS::TripleO::Services::CephClient: /usr/share/openstack-tripleo-heat-templates/puppet/services/ceph-client.yaml
+
+.
 $
 a
 
@@ -48,19 +59,12 @@ outputs:
 EOF1
 cp /tmp/vmsetup/wipe-disk.sh ${HOME}/templates/firstboot/wipe-disk.sh
 chmod 0775 ${HOME}/templates/firstboot/wipe-disk.sh
-sed -i 's/# CephStorageCount: 0/CephStorageCount: 3/' ${HOME}/templates/storage-environment.yaml
-
-sleep 301
-
-export HEAT_INCLUDE_PASSWORD=1
-openstack overcloud deploy --templates \
-  -e ${HOME}/templates/storage-environment.yaml \
-  --control-scale 1 \
-  --ceph-storage-scale 3 \
-  --compute-scale 1 \
-  --compute-flavor compute \
-  --ceph-storage-flavor ceph-storage \
-  --control-flavor control \
-  --ntp-server clock.redhat.com \
-  --libvirt-type kvm
-  
+sed -i 's/# CephStorageCount: 0/CephStorageCount: 3/' ${HOME}/templates/environments/storage-environment.yaml
+sudo sed -i 's/After=.*/After=network.target/' /etc/systemd/system/openstack-ironic-inspector-dnsmasq.service
+sudo openstack-service restart
+sleep 240
+sudo iptables -F
+/tmp/vmsetup/overcloud_gets_real.sh
+#if ! [ -e overcloudrc ]; then
+#    /tmp/vmsetup/overcloud_gets_real.sh
+#fi
