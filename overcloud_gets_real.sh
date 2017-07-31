@@ -4,7 +4,7 @@
 #
 HOME=/home/stack
 source /tmp/vmsetup/secrets
-testr = ${deploytoo:-'yes'}
+testr=${deploytoo:-'yes'}
 if ! [ ${testr} = 'yes' ]; then
    exit 0
 fi
