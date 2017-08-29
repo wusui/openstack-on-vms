@@ -4,7 +4,7 @@
 # execute install_do.sh on the remote machine
 #
 source ./secrets
-machine=${1:-'magna199'}
+machine=${1:-'magna050'}
 tar cvf /tmp/quick.tar .
 scp /tmp/quick.tar ${octoname}@${machine}:/tmp/quick.tar
 scp install_do.sh ${octoname}@${machine}:/tmp/install_do.sh
