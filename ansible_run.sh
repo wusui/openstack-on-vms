@@ -5,6 +5,8 @@
 #        trying to install ospd versions that are not there.
 #
 #cd ~/ansible
+source /tmp/vmsetup/secrets
+osversion=${rhelvers:-'9'}
 sed ':a;N;$!ba;s/\n/\\n/g' ~/.ssh/id_rsa > /tmp/amiddle
 cat <<EOF > /tmp/astart
 ---
@@ -18,14 +20,14 @@ cat <<EOF > /tmp/astart
   vars:
     rhn_username: stack
     virt_env_ospd_rhos_release: false
-    virt_env_ospd_director_version: 9-director
+    virt_env_ospd_director_version: ${osversion}-director
     rhn_repos:
       - rhel-7-server-rpms
       - rhel-7-server-extras-rpms
       - rhel-7-server-rh-common-rpms
       - rhel-ha-for-rhel-7-server-rpms
-      - rhel-7-server-openstack-9-rpms
-      - rhel-7-server-openstack-9-director-rpms
+      - rhel-7-server-openstack-${osversion}-rpms
+      - rhel-7-server-openstack-${osversion}-director-rpms
       - rhel-7-server-rhceph-1.3-osd-rpms
       - rhel-7-server-rhceph-1.3-mon-rpms
       - rhel-7-server-rhceph-1.3-tools-rpms
@@ -42,7 +44,7 @@ cat <<EOF > /tmp/astart
       name: aardvark_${1}
       disk_size: 40g
       cpu: 8
-      mem: 16384
+      mem: 32768
       cloud_init_iso: cloud-init-aardvark.iso
 
       # CEPH VM
@@ -84,7 +86,7 @@ cat <<EOF > /tmp/astart
       name: control
       disk_size: 42g
       cpu: 4
-      mem: 8192
+      mem: 16384
       # The last digit is not missing !!
       mac: 52:54:00:aa:e3:6
       vm_count: 1
